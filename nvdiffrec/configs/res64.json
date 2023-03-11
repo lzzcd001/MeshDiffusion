@@ -1,0 +1,18 @@
+{
+    "random_textures": true,
+    "iter": 5000,
+    "save_interval": 100,
+    "texture_res": [ 2048, 2048 ],
+    "train_res": [1000, 1000],
+    "batch": 4,
+    "learning_rate": [0.01, 0.003],
+    "ks_min" : [0, 0.08, 0.0],
+    "dmtet_grid" : 64,
+    "mesh_scale" : 1.1,
+    "laplace_scale" : 10000,
+    "display": [{"bsdf" : "kd"}, {"bsdf" : "ks"}, {"bsdf" : "normal"}, {"depth": true}],
+    "background" : "white",
+    "envmap": "./data/irrmaps/aerodynamics_workshop_2k.hdr",
+    "tet_path": "./data/tets/64_tets_cropped.npz",
+    "cropped": true
+}
