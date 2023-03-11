@@ -73,6 +73,8 @@ python main_diffusion.py --mode=cond_gen --config=$DIFFUSION_CONFIG \
 --config.eval.batch_size=$EVAL_BATCH_SIZE
 ```
 
+, in which `$TET_PATH` is the uniform tetrahedral grid (of resolution 64 or 128) file in `nvdiffrec/data/tets`.
+
 Now store the completed meshes as `.obj` files in `$SAMPLE_PATH`
 
 ```
@@ -119,6 +121,10 @@ where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the traini
 ## Texture Generation
 
 Follow the instructions in https://github.com/TEXTurePaper/TEXTurePaper and create text-conditioned textures for the generated meshes.
+
+## Others
+
+If tetrahedral grids of higher resolutions are needed, first follow the README in `nvdiffrec/data/tets` and use quartet (https://github.com/crawforddoran/quartet) to generate a uniform tetrahedral grid. Then run `nvdiffrec/data/tets/crop_tets.py` to remove the boundary (so that translational symmetry holds in the resulted grid).
 
 ## Citation
 If you find our work useful to your research, please consider citing:
