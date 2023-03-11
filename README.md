@@ -92,8 +92,10 @@ Then run the following
 
 ```
 cd nvdiffrec
-python fit_dmtets.py --config $DMTET_CONFIG --out-dir $DMTET_DATA_PATH
+python fit_dmtets.py --config $DMTET_CONFIG --out-dir $DMTET_DATA_PATH --index 0 --split-size 100000
 ```
+
+In case of batch fitting with multiple jobs, change `split_size` to a suitable number and assign a different `index` for different jobs.
 
 Create a meta file of all dmtet grid file locations for diffusion model training:
 
