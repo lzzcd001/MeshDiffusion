@@ -1,9 +1,13 @@
 # MeshDiffusion: Score-based Generative 3D Mesh Modeling (ICLR 2023 Spotlight)
 
+![MeshDiffusion Teaser](/asserts/mesh_teaser.png)
+
 This is the official implementation of MeshDiffusion.
 
 MeshDiffusion is a diffusion model for generating 3D meshes with a direct parametrization of deep marching tetrahedra (DMTet). Please refer to https://meshdiffusion.github.io for more details.
 
+
+![MeshDiffusion Pipeline](/asserts/meshdiffusion_pipeline.png)
 
 ## Getting Started
 
@@ -40,7 +44,7 @@ cd nvdiffrec
 python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH
 ```
 
-where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`
+where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`.
 
 
 ### Single-view Conditional Generation
@@ -56,11 +60,11 @@ Then use the trained diffusion model to complete the occluded regions
 
 ```
 cd ..
-python main_diffusion.py --config=$DIFFUSION_CONFIG --mode=cond_gen \
+python main_diffusion.py --mode=cond_gen --config=$DIFFUSION_CONFIG \
 --config.eval.eval_dir=$EVAL_DIR \
 --config.eval.ckpt_path=$CKPT_PATH \
 --config.eval.partial_dmtet_path=$OUT_DIR/tets/dmtet.pt \
---config.eval.tet_path=$TET_PATH \
+--config.eval.tet_path=$TET_PATH
 --config.eval.batch_size=$EVAL_BATCH_SIZE
 ```
 
@@ -79,22 +83,25 @@ Then run the following
 
 ```
 cd nvdiffrec
-python fit_dmtets.py
+python fit_dmtets.py --config $DMTET_CONFIG --out-dir $DMTET_DATA_PATH
 ```
+
+
 
 Create a meta file for diffusion model training:
 
 ```
 cd ../metadata/
-python save_meta.py
+python save_meta.py --data_path $DMTET_DATA_PATH/tets --json_path $META_FILE
 ```
 
 Train a diffusion model
 
 ```
 cd ..
-python main_diffusion.py --mode=train \
-
+python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
+--config.data.meta_path=$META_FILE
+--config.data.filter_meta_path=$TRAIN_SPLIT_FILE
 ```
 
 ## Texture Completion

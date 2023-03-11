@@ -564,8 +564,7 @@ if __name__ == "__main__":
     parser.add_argument('-ss', '--split-size', type=int, default=10)
     parser.add_argument('--cropped', type=bool, default=True)
     parser.add_argument('-no', '--normal-only', type=bool, default=True)
-    parser.add_argument('--meta-folder', type=str, default='./data/shapenet_json')
-    parser.add_argument('--cat-name', type=str, default='chair')
+    parser.add_argument('--meta-path', type=str, default='./data/shapenet_json/chair.json')
     parser.add_argument('-rp', '--resume-path', type=str, default=None)
     parser.add_argument('-ema', '--use-ema', action="store_true")
     
@@ -619,8 +618,6 @@ if __name__ == "__main__":
     if FLAGS.display_res is None:
         FLAGS.display_res = FLAGS.train_res
 
-    FLAGS.out_dir = os.path.join(FLAGS.out_dir, FLAGS.cat_name)
-
     if FLAGS.local_rank == 0:
         print("Config / Flags:")
         print("---------")
@@ -648,10 +645,9 @@ if __name__ == "__main__":
     }
 
 
-    print(f"meta json path {os.path.join(FLAGS.meta_folder, f'{FLAGS.cat_name}.json')}")
+    print(f"meta json path {FLAGS.meta_path}")
     shapenet_dataset = ShapeNetDataset(
-        os.path.join(FLAGS.meta_folder, f'{FLAGS.cat_name}.json'), 
-        shapenet_v1=(FLAGS.cat_name == 'car')
+        os.path.join(FLAGS.meta_folder, f'{FLAGS.meta_path}')
     )
 
     print("Start iterating through objects")
