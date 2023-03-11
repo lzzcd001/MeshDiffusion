@@ -41,10 +41,12 @@ Later run
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE
+python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE [--angle_index $ANGLE_INDEX]
 ```
 
-where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets).
+where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets). Change `$ANGLE_INDEX` to some number from 0 to 50 if images rendered from different angles are desired.
+
+A mesh file (`.obj`) will also be saved to the folder, which can be viewed in tools such as MeshLab.
 
 
 ### Single-view Conditional Generation
@@ -79,6 +81,8 @@ python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH  --deform-scale
 ```
 
 Caution: the deformation scale should be consistent for single view fitting and the diffusion model. Check before you run conditional generation.
+
+
 
 ## Training
 

@@ -321,6 +321,7 @@ if __name__ == "__main__":
     parser.add_argument('-vn', '--viz-name', type=str, default='viz')
     parser.add_argument('--unnormalized_sdf', action="store_true")
     parser.add_argument('--validate', type=bool, default=True)
+    parser.add_argument('--angle-index', type=int, default=25)
     
     FLAGS = parser.parse_args()
 
@@ -430,25 +431,25 @@ if __name__ == "__main__":
         
         
         ### save image (before post-processing)
-        v_pose = rotate_scene(FLAGS, 25) ## pick a pose (pose # from 0 to 50)
+        v_pose = rotate_scene(FLAGS, FLAGS.angle_index) ## pick a pose (pose # from 0 to 50)
         result_image, _ = validate_itr(glctx, prepare_batch(v_pose, FLAGS.background), geometry, opt_material, lgt, FLAGS)
         result_image = result_image.detach().cpu().numpy()
         util.save_image(os.path.join(viz_path, ('%s_%06d.png' % (FLAGS.viz_name, no_data))), result_image)
 
 
-        # ### save post-processed mesh
-        # mesh_savepath = os.path.join(mesh_path, '{:06d}.obj'.format(no_data))
-        # save_obj(
-        #     verts=base_mesh.v_pos,
-        #     faces=base_mesh.t_pos_idx,
-        #     f=mesh_savepath
-        # )
+        ### save post-processed mesh
+        mesh_savepath = os.path.join(mesh_path, '{:06d}.obj'.format(no_data))
+        save_obj(
+            verts=base_mesh.v_pos,
+            faces=base_mesh.t_pos_idx,
+            f=mesh_savepath
+        )
 
-        # ms = pymeshlab.MeshSet()
-        # ms.load_new_mesh(mesh_savepath)
-        # ms.meshing_isotropic_explicit_remeshing()
-        # ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=False)
-        # # ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=True) ## for smoother surface
-        # ms.meshing_isotropic_explicit_remeshing()
-        # ms.apply_filter_script()
-        # ms.save_current_mesh(mesh_savepath)
+        ms = pymeshlab.MeshSet()
+        ms.load_new_mesh(mesh_savepath)
+        ms.meshing_isotropic_explicit_remeshing()
+        ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=False)
+        # ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=True) ## for smoother surface
+        ms.meshing_isotropic_explicit_remeshing()
+        ms.apply_filter_script()
+        ms.save_current_mesh(mesh_savepath)
