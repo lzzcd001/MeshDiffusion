@@ -1,13 +1,13 @@
 # MeshDiffusion: Score-based Generative 3D Mesh Modeling (ICLR 2023 Spotlight)
 
-![MeshDiffusion Teaser](/asserts/mesh_teaser.png)
+![MeshDiffusion Teaser](/assets/mesh_teaser.png)
 
 This is the official implementation of MeshDiffusion.
 
 MeshDiffusion is a diffusion model for generating 3D meshes with a direct parametrization of deep marching tetrahedra (DMTet). Please refer to https://meshdiffusion.github.io for more details.
 
 
-![MeshDiffusion Pipeline](/asserts/meshdiffusion_pipeline.png)
+![MeshDiffusion Pipeline](/assets/meshdiffusion_pipeline.png)
 
 ## Getting Started
 
