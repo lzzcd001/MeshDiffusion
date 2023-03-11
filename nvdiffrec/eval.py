@@ -321,7 +321,7 @@ if __name__ == "__main__":
     parser.add_argument('-vn', '--viz-name', type=str, default='viz')
     parser.add_argument('--unnormalized_sdf', action="store_true")
     parser.add_argument('--validate', type=bool, default=True)
-    parser.add_argument('--angle-index', type=int, default=25)
+    parser.add_argument('--angle-index', type=int, default=25, help='z-axis rotation of the object, from 0 to 50')
     
     FLAGS = parser.parse_args()
 
