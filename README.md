@@ -2,7 +2,7 @@
 
 ![MeshDiffusion Teaser](/assets/mesh_teaser.jpg)
 
-This is the official implementation of MeshDiffusion.
+This is the official implementation of MeshDiffusion (https://openreview.net/forum?id=0cpM2ApF9p6).
 
 MeshDiffusion is a diffusion model for generating 3D meshes with a direct parametrization of deep marching tetrahedra (DMTet). Please refer to https://meshdiffusion.github.io for more details.
 
