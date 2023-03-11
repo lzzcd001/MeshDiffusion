@@ -116,7 +116,7 @@ python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
 
 where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the training set. Examples in `metadata/train_split/`.
 
-## Texture Completion
+## Texture Generation
 
 Follow the instructions in https://github.com/TEXTurePaper/TEXTurePaper and create text-conditioned textures for the generated meshes.
 
