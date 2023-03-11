@@ -46,7 +46,7 @@ python eval.py --config $DMTET_CONFIG --out-dir $OUT_DIR --sample-path $SAMPLE_P
 
 where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets). Change `$ANGLE_INDEX` to some number from 0 to 50 if images rendered from different angles are desired.
 
-A mesh file (`.obj`) will also be saved to the folder, which can be viewed in tools such as MeshLab.
+A mesh file (`.obj`) will be saved to the folder, which can be viewed in tools such as MeshLab. The saved images are rendered from raw meshes without post-processing and thus are used for fast sanity check only.
 
 
 ### Single-view Conditional Generation
