@@ -41,7 +41,7 @@ Later run
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH [--deform-scale $DEFORM_SCALE]
+python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE
 ```
 
 where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets).
