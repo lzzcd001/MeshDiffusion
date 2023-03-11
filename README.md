@@ -62,11 +62,12 @@ Then use the trained diffusion model to complete the occluded regions
 
 ```
 cd ..
+
 python main_diffusion.py --mode=cond_gen --config=$DIFFUSION_CONFIG \
 --config.eval.eval_dir=$EVAL_DIR \
 --config.eval.ckpt_path=$CKPT_PATH \
 --config.eval.partial_dmtet_path=$OUT_DIR/tets/dmtet.pt \
---config.eval.tet_path=$TET_PATH
+--config.eval.tet_path=$TET_PATH \
 --config.eval.batch_size=$EVAL_BATCH_SIZE
 ```
 
@@ -101,8 +102,9 @@ Train a diffusion model
 
 ```
 cd ..
+
 python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
---config.data.meta_path=$META_FILE
+--config.data.meta_path=$META_FILE \
 --config.data.filter_meta_path=$TRAIN_SPLIT_FILE
 ```
 
