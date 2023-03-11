@@ -376,8 +376,10 @@ if __name__ == "__main__":
 
     # Setup geometry for optimization
     resolution = FLAGS.dmtet_grid
-    geometry = DMTetGeometry(resolution, FLAGS.mesh_scale, FLAGS)
-    geometry.deform_scale = FLAGS.deform_scale
+    geometry = DMTetGeometry(
+        resolution, FLAGS.mesh_scale, FLAGS, 
+        deform_scale=FLAGS.deform_scale
+    )
 
     mask = torch.load(f'../data/grid_mask_{resolution}.pt').view(1, resolution, resolution, resolution).to("cuda")
 

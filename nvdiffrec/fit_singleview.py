@@ -705,7 +705,10 @@ if __name__ == "__main__":
     # ==============================================================================================
 
     # Setup geometry for optimization
-    geometry = DMTetGeometry(FLAGS.dmtet_grid, FLAGS.mesh_scale, FLAGS)
+    geometry = DMTetGeometry(
+        FLAGS.dmtet_grid, FLAGS.mesh_scale, FLAGS, 
+        deform_scale=FLAGS.first_stage_deform
+    )
 
     # Setup textures, make initial guess from reference if possible
     if not FLAGS.normal_only:
@@ -757,15 +760,17 @@ if __name__ == "__main__":
             base_mesh = xatlas_uvmap(glctx, geometry, mat, FLAGS)
 
 
-    geometry = DMTetGeometryFixedTopo(geometry, base_mesh, FLAGS.dmtet_grid, FLAGS.mesh_scale, FLAGS)
+    geometry = DMTetGeometryFixedTopo(
+        geometry, base_mesh, FLAGS.dmtet_grid, FLAGS.mesh_scale, FLAGS,
+        deform_scale=FLAGS.second_stage_deform
+    )
     
     
     geometry.sdf_sign.requires_grad = False
     geometry.sdf_abs.requires_grad = False
     geometry.deform.requires_grad = True
 
-    geometry.deform.data[:] = geometry.deform * 2.0 / 3.0
-    geometry.deform_scale = 3.0
+    geometry.deform.data[:] = geometry.deform * FLAGS.first_stage_deform / FLAGS.second_stage_deform
 
     if FLAGS.use_ema:
         geometry.sdf_sign.data[:] = torch.sign(old_geometry.sdf_ema) ### use ema

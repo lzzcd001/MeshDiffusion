@@ -14,5 +14,6 @@
     "background" : "white",
     "envmap": "./data/irrmaps/aerodynamics_workshop_2k.hdr",
     "tet_path": "./data/tets/128_tets_cropped.npz",
-    "cropped": true
+    "first_stage_deform": 0.45,
+    "second_stage_deform": 1.5
 }

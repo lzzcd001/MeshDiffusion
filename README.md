@@ -19,11 +19,11 @@ MeshDiffusion is a diffusion model for generating 3D meshes with a direct parame
 - Pytorch3D
 
 
-Install https://github.com/NVlabs/nvdiffrec
+Follow the instructions to install requirements for nvdiffrec: https://github.com/NVlabs/nvdiffrec
 
 ### Pretrained Models
 
-Download the files from 
+Download the model checkpoints from https://drive.google.com/drive/folders/15IjbUM1tQf8gS0YsRqY5ZbMs-leJgoJ0?usp=sharing.
 
 ## Inference
 
@@ -41,10 +41,10 @@ Later run
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH
+python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH [--deform-scale $DEFORM_SCALE]
 ```
 
-where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`.
+where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets).
 
 
 ### Single-view Conditional Generation
@@ -53,8 +53,10 @@ First fit a DMTet from a single view of a mesh
 
 ```
 cd nvdiffrec
-python fit_singleview.py --mesh-path $MESH_PATH --angle-ind $ANGLE_IND --out-dir $OUT_DIR --validate $VALIDATE
+python fit_singleview.py --config $DMTET_CONFIG --mesh-path $MESH_PATH --angle-ind $ANGLE_IND --out-dir $OUT_DIR --validate $VALIDATE
 ```
+
+where `$ANGLE_IND` is an integer (0 to 50) controlling the z-axis rotation of the object. Set `$VALIDATE` to 1 if visualization of fitted DMTets is needed.
 
 Then use the trained diffusion model to complete the occluded regions
 
@@ -68,12 +70,14 @@ python main_diffusion.py --mode=cond_gen --config=$DIFFUSION_CONFIG \
 --config.eval.batch_size=$EVAL_BATCH_SIZE
 ```
 
-Now visualize the completed meshes
+Now store the completed meshes as `.obj` files in `$SAMPLE_PATH`
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH
+python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH  --deform-scale $DEFORM_SCALE
 ```
+
+Caution: the deformation scale should be consistent for single view fitting and the diffusion model. Check before you run conditional generation.
 
 ## Training
 
@@ -86,9 +90,7 @@ cd nvdiffrec
 python fit_dmtets.py --config $DMTET_CONFIG --out-dir $DMTET_DATA_PATH
 ```
 
-
-
-Create a meta file for diffusion model training:
+Create a meta file of all dmtet grid file locations for diffusion model training:
 
 ```
 cd ../metadata/
@@ -103,6 +105,8 @@ python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
 --config.data.meta_path=$META_FILE
 --config.data.filter_meta_path=$TRAIN_SPLIT_FILE
 ```
+
+where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the training set. Examples in `metadata/train_split/`.
 
 ## Texture Completion
 
