@@ -108,6 +108,19 @@ python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
 
 Follow the instructions in https://github.com/TEXTurePaper/TEXTurePaper and create text-conditioned textures for the generated meshes.
 
+## Citation
+If you find our work useful to your research, please consider citing:
+
+```
+@InProceedings{Liu2023MeshDiffusion,
+    title={MeshDiffusion: Score-based Generative 3D Mesh Modeling},
+    author={Zhen Liu and Yao Feng and Michael J. Black and Derek Nowrouzezahrai and Liam Paull and Weiyang Liu},
+    booktitle={International Conference on Learning Representations},
+    year={2023},
+    url={https://openreview.net/forum?id=0cpM2ApF9p6}
+}
+```
+
 ## Acknowledgement
 
 This repo is adapted from https://github.com/NVlabs/nvdiffrec and https://github.com/yang-song/score_sde_pytorch.
