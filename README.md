@@ -1,13 +1,21 @@
-# MeshDiffusion: Score-based Generative 3D Mesh Modeling (ICLR 2023 Spotlight)
-
-![MeshDiffusion Teaser](/assets/mesh_teaser.jpg)
-
-This is the official implementation of MeshDiffusion (https://openreview.net/forum?id=0cpM2ApF9p6).
-
-MeshDiffusion is a diffusion model for generating 3D meshes with a direct parametrization of deep marching tetrahedra (DMTet). Please refer to https://meshdiffusion.github.io for more details.
+# MeshDiffusion: Score-based Generative 3D Mesh Modeling
 
 
-![MeshDiffusion Pipeline](/assets/meshdiffusion_pipeline.jpg)
+<div align="center">
+  <img src="assets/mesh_teaser.jpg" width="900"/>
+</div>
+
+## Introduction
+
+This is the official implementation of [MeshDiffusion](https://openreview.net/forum?id=0cpM2ApF9p6) (ICLR 2023 Spotlight).
+
+MeshDiffusion is a diffusion model for generating 3D meshes with a direct parametrization of deep marching tetrahedra (DMTet). Please refer to [our project page](https://meshdiffusion.github.io) for more details and interactive demos.
+
+
+
+<div align="center">
+  <img src="assets/meshdiffusion_pipeline.jpg" width="900"/>
+</div>
 
 ## Getting Started
 
@@ -19,11 +27,13 @@ MeshDiffusion is a diffusion model for generating 3D meshes with a direct parame
 - Pytorch3D
 
 
-Follow the instructions to install requirements for nvdiffrec: https://github.com/NVlabs/nvdiffrec
+Follow the instructions to install requirements for [nvdiffrec](https://github.com/NVlabs/nvdiffrec)
 
 ### Pretrained Models
 
-Download the model checkpoints from https://drive.google.com/drive/folders/15IjbUM1tQf8gS0YsRqY5ZbMs-leJgoJ0?usp=sharing.
+Download the model checkpoints from [Google Drive](https://drive.google.com/drive/folders/15IjbUM1tQf8gS0YsRqY5ZbMs-leJgoJ0?usp=sharing).
+
+Download our pretrained MeshDiffusion model for [chair](https://keeper.mpdl.mpg.de/f/95640f5bd3764a44b907/?dl=1), [car](https://keeper.mpdl.mpg.de/f/061265ef78df494baaf5/?dl=1) and [airplane](https://keeper.mpdl.mpg.de/f/f5074d6b0cb24445a80d/?dl=1).
 
 ## Inference
 
