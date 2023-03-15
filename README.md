@@ -61,7 +61,7 @@ A mesh file (`.obj`) will be saved to the folder, which can be viewed in tools s
 
 ### Single-view Conditional Generation
 
-First fit a DMTet from a single view of a mesh
+First fit a DMTet from a single view of a mesh positioned in its canonical pose
 
 ```
 cd nvdiffrec
