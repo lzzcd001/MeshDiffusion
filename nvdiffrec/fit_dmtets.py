@@ -646,8 +646,7 @@ if __name__ == "__main__":
 
 
     print(f"meta json path {FLAGS.meta_path}")
-    shapenet_dataset = ShapeNetDataset(f'{FLAGS.meta_path}'
-    )
+    shapenet_dataset = ShapeNetDataset(f'{FLAGS.meta_path}')
 
     print("Start iterating through objects")
     sys.stdout.flush()
