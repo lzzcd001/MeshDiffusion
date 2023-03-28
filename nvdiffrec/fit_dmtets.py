@@ -646,8 +646,7 @@ if __name__ == "__main__":
 
 
     print(f"meta json path {FLAGS.meta_path}")
-    shapenet_dataset = ShapeNetDataset(
-        os.path.join(FLAGS.meta_folder, f'{FLAGS.meta_path}')
+    shapenet_dataset = ShapeNetDataset(f'{FLAGS.meta_path}'
     )
 
     print("Start iterating through objects")
@@ -686,8 +685,6 @@ if __name__ == "__main__":
 
                 print("Loading dataset")
                 sys.stdout.flush()
-                if FLAGS.cat_name == 'car':
-                    RADIUS = 2.0
                 dataset_train    = DatasetMesh(ref_mesh, glctx, RADIUS, FLAGS, validate=False)
                 dataset_validate = DatasetMesh(ref_mesh, glctx, RADIUS, FLAGS, validate=True)
                 print("Dataset loaded")
