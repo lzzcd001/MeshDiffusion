@@ -104,10 +104,10 @@ Then run the following
 
 ```
 cd nvdiffrec
-python fit_dmtets.py --config $DMTET_CONFIG --out-dir $DMTET_DATA_PATH --index 0 --split-size 100000
+python fit_dmtets.py --config $DMTET_CONFIG --meta-path $META_PATH --out-dir $DMTET_DATA_PATH --index 0 --split-size 100000
 ```
 
-where `split_size` is set to any large number greater than the dataset size. In case of batch fitting with multiple jobs, change `split_size` to a suitable number and assign a different `index` for different jobs. Tune the resolutions in the 1st and 2nd pass fitting in the config file if necessary.
+where `split_size` is set to any large number greater than the dataset size. In case of batch fitting with multiple jobs, change `split_size` to a suitable number and assign a different `index` for different jobs. Tune the resolutions in the 1st and 2nd pass fitting in the config file if necessary. `$META_PATH` is the json file created to store the list of meshes paths.
 
 Create a meta file of all dmtet grid file locations for diffusion model training:
 
@@ -126,7 +126,7 @@ python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
 --config.data.filter_meta_path=$TRAIN_SPLIT_FILE
 ```
 
-where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the training set. Examples in `metadata/train_split/`.
+where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the training set. Examples in `metadata/train_split/`. For the diffusion model config file, please refer to `configs/res64.py` or `configs/res128.py`.
 
 ## Texture Generation
 
