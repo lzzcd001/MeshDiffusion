@@ -136,6 +136,10 @@ Follow the instructions in https://github.com/TEXTurePaper/TEXTurePaper and crea
 
 If tetrahedral grids of higher resolutions are needed, first follow the README in `nvdiffrec/data/tets` and use quartet (https://github.com/crawforddoran/quartet) to generate a uniform tetrahedral grid. Then run `nvdiffrec/data/tets/crop_tets.py` to remove the boundary (so that translational symmetry holds in the resulted grid).
 
+## Blender Visualization
+
+To visualize generated meshes with blender, please see `blender_viz/` for more details.
+
 ## Citation
 If you find our work useful to your research, please consider citing:
 
