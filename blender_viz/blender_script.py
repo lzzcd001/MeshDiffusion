@@ -84,9 +84,7 @@ for k, meshPath in enumerate(path_list):
 
 	imgRes_x = 720 # recommend > 1080 
 	imgRes_y = 720 # recommend > 1080 
-	numSamples = 10 # for car
-	# numSamples = 100 # for car
-	# numSamples = 1000 # recommend > 200
+	numSamples = 10
 	exposure = 1.5
 	bpy.context.scene.render.film_transparent = True
 	bpy.context.scene.cycles.samples = numSamples
@@ -118,10 +116,6 @@ for k, meshPath in enumerate(path_list):
 			minz = v_world[2]
 
 	mesh.location.z = mesh.location.z - minz
-
-
-	## save blender file so that you can adjust parameters in the UI
-	# bpy.ops.wm.save_mainfile(filepath=os.getcwd() + '/test.blend')
 
 	bpy.data.scenes['Scene'].render.filepath = out_file_path
 	bpy.ops.render.render(write_still = True)
