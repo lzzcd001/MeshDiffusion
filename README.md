@@ -109,7 +109,16 @@ python fit_dmtets.py --config $DMTET_CONFIG --meta-path $META_PATH --out-dir $DM
 
 where `split_size` is set to any large number greater than the dataset size. In case of batch fitting with multiple jobs, change `split_size` to a suitable number and assign a different `index` for different jobs. Tune the resolutions in the 1st and 2nd pass fitting in the config file if necessary. `$META_PATH` is the json file created to store the list of meshes paths.
 
-Create a meta file of all dmtet grid file locations for diffusion model training:
+Now convert the DMTet dataset (stored as python dicts) into a dataset of 3D cubic grids:
+
+```
+cd ../data/
+python tets_to_3dgrid.py --resolution $RESOLUTION --root $DMTET_DICT_FOLDER --source $SOURCE_FOLDER --target grid --index 0
+```
+
+in which we assume the DMTet dict dataset is stored in `$DMTET_DICT_FOLDER/$SOURCE_FOLDER` and we will save the resulted cubic grid dataset in `$DMTET_DICT_FOLDER/grid`.
+
+Create a meta file of all dmtet 3D cubic grid file locations for diffusion model training:
 
 ```
 cd ../metadata/
