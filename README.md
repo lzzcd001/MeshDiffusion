@@ -37,7 +37,7 @@ Download the res-128 models here: [car](https://huggingface.co/lzzcd001/MeshDiff
 
 ### Datasets
 
-We provide processed datasets (in the form of cubic grids) of resolution 64 in this [link](https://huggingface.co/datasets/lzzcd001/MeshDiffusion_DMTet_Dataset). The deformation scale for the datasets are set to 3.0, and the SDF values of all non-mesh-generating tetrahedral vertices are set to either 1 or -1 (depending on their signs), as described in the paper. The DMTet grid after removing the boundary is of size 63x63x63 and padded on the right to 64x64x64 for convenience. Please check `eval.py` to see how to extract DMTet from the 3D cubic grids.
+We provide processed datasets (in the form of cubic grids) of resolution 64 in this [link](https://huggingface.co/datasets/lzzcd001/MeshDiffusion_DMTet_Dataset). The deformation scale for the datasets are set to 3.0, and the SDF values of all non-mesh-generating tetrahedral vertices is set to either 1 or -1 (depending on their signs), as described in the paper. The DMTet grid after removing the boundary is of size 63x63x63 and padded on the right to 64x64x64 for convenience. Please check `eval.py` to see how to extract DMTet from the 3D cubic grids.
 
 ## Inference
 
