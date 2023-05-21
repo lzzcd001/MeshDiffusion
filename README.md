@@ -31,9 +31,9 @@ Follow the instructions to install requirements for [nvdiffrec](https://github.c
 
 ### Pretrained Models
 
-Download the model checkpoints from [Google Drive](https://drive.google.com/drive/folders/15IjbUM1tQf8gS0YsRqY5ZbMs-leJgoJ0?usp=sharing).
+Download our pretrained MeshDiffusion models (resolution 64) for [chair](https://keeper.mpdl.mpg.de/f/95640f5bd3764a44b907/?dl=1), [car](https://keeper.mpdl.mpg.de/f/061265ef78df494baaf5/?dl=1) and [airplane](https://keeper.mpdl.mpg.de/f/f5074d6b0cb24445a80d/?dl=1). As a backup option, you can also download the models for car and chair from [Google Drive](https://drive.google.com/drive/folders/15IjbUM1tQf8gS0YsRqY5ZbMs-leJgoJ0?usp=sharing).
 
-Download our pretrained MeshDiffusion model for [chair](https://keeper.mpdl.mpg.de/f/95640f5bd3764a44b907/?dl=1), [car](https://keeper.mpdl.mpg.de/f/061265ef78df494baaf5/?dl=1) and [airplane](https://keeper.mpdl.mpg.de/f/f5074d6b0cb24445a80d/?dl=1).
+Download the res-128 models here: [car](https://huggingface.co/lzzcd001/MeshDiffusion_models/blob/main/car_res128.pt) and [chair](https://huggingface.co/lzzcd001/MeshDiffusion_models/blob/main/chair_res128.pt).
 
 ## Inference
 
