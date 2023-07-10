@@ -322,6 +322,7 @@ if __name__ == "__main__":
     parser.add_argument('--unnormalized_sdf', action="store_true")
     parser.add_argument('--validate', type=bool, default=True)
     parser.add_argument('--angle-ind', type=int, default=25, help='z-axis rotation of the object, from 0 to 50')
+    parser.add_argument('-ns', '--num-smooth-steps', type=int, default=3, help='number of post-processing Laplacian smoothing steps')
     
     FLAGS = parser.parse_args()
 
@@ -448,7 +449,7 @@ if __name__ == "__main__":
         ms = pymeshlab.MeshSet()
         ms.load_new_mesh(mesh_savepath)
         ms.meshing_isotropic_explicit_remeshing()
-        ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=False)
+        ms.apply_coord_laplacian_smoothing(stepsmoothnum=FLAGS.num_smooth_steps, cotangentweight=False)
         # ms.apply_coord_laplacian_smoothing(stepsmoothnum=3, cotangentweight=True) ## for smoother surface
         ms.meshing_isotropic_explicit_remeshing()
         ms.apply_filter_script()
