@@ -55,7 +55,8 @@ Later run
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --out-dir $OUT_DIR --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE [--angle-ind $ANGLE_INDEX] [--num-smoothing-steps $NUM_SMOOTHING_STEPS]
+python eval.py --config $DMTET_CONFIG --out-dir $OUT_DIR --sample-path $SAMPLE_PATH \
+--deform-scale $DEFORM_SCALE [--angle-ind $ANGLE_INDEX] [--num-smoothing-steps $NUM_SMOOTHING_STEPS]
 ```
 
 where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets). Change `$ANGLE_INDEX` to some number from 0 to 50 if images rendered from different angles are desired. Change `$NUM_SMOOTHING_STEPS` (default value 3) if the Laplacian smoothing during post-processing is too strong. For instance, we recommend setting `$NUM_SMOOTHING_STEPS` to 1 or 2 for the airplane category.
@@ -93,7 +94,8 @@ Now store the completed meshes as `.obj` files in `$SAMPLE_PATH`
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH  --deform-scale $DEFORM_SCALE
+python eval.py --config $DMTET_CONFIG --sample-path $SAMPLE_PATH \
+--deform-scale $DEFORM_SCALE [--angle-ind $ANGLE_INDEX] [--num-smoothing-steps $NUM_SMOOTHING_STEPS]
 ```
 
 Caution: the deformation scale should be consistent for single view fitting and the diffusion model. Check before you run conditional generation.
