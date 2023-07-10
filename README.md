@@ -55,10 +55,10 @@ Later run
 
 ```
 cd nvdiffrec
-python eval.py --config $DMTET_CONFIG --out-dir $OUT_DIR --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE [--angle-ind $ANGLE_INDEX]
+python eval.py --config $DMTET_CONFIG --out-dir $OUT_DIR --sample-path $SAMPLE_PATH --deform-scale $DEFORM_SCALE [--angle-ind $ANGLE_INDEX] [--num-smoothing-steps $NUM_SMOOTHING_STEPS]
 ```
 
-where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets). Change `$ANGLE_INDEX` to some number from 0 to 50 if images rendered from different angles are desired.
+where `$SAMPLE_PATH` is the generated sample `.npy` file in `$OUTPUT_PATH`, and `$DEFORM_SCALE` is the scale of deformation of tet vertices set for the DMTet dataset (we use 3.0 for resolution 64 as default; change the value for your own datasets). Change `$ANGLE_INDEX` to some number from 0 to 50 if images rendered from different angles are desired. Change `$NUM_SMOOTHING_STEPS` (default value 3) if the Laplacian smoothing during post-processing is too strong. For instance, we recommend setting `$NUM_SMOOTHING_STEPS` to 1 or 2 for the airplane category.
 
 A mesh file (`.obj`) will be saved to the folder, which can be viewed in tools such as MeshLab. The saved images are rendered from raw meshes without post-processing and thus are used for fast sanity check only.
 
