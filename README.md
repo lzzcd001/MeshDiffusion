@@ -128,7 +128,7 @@ Create a meta file of all dmtet 3D cubic grid file locations for diffusion model
 
 ```
 cd ../metadata/
-python save_meta.py --data_path $DMTET_DATA_PATH/tets --json_path $META_FILE
+python save_meta.py --data_path $DMTET_DICT_FOLDER/grid --json_path $META_FILE
 ```
 
 Train a diffusion model
