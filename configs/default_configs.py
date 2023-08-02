@@ -56,6 +56,7 @@ def get_default_configs():
   data.normalize_sdf = True
   data.meta_path = "PLACEHOLDER" ### metadata for all dataset files
   data.filter_meta_path = "PLACEHOLDER" ### metadata for the list of training samples
+  data.extension = 'pt' ### either 'pt' or 'npy', depending how the data are stored
 
   # model
   config.model = model = ml_collections.ConfigDict()
