@@ -66,7 +66,7 @@ def train(config):
 
     print("sdf normalized or not: ", config.data.normalize_sdf)
     train_dataset = ShapeNetDMTetDataset(json_path, deform_scale=config.model.deform_scale, aug=True, grid_mask=mask, 
-            filter_meta_path=config.data.filter_meta_path, normalize_sdf=config.data.normalize_sdf)
+            filter_meta_path=config.data.filter_meta_path, normalize_sdf=config.data.normalize_sdf, extension=config.data.extension)
 
 
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=config.training.batch_size, 
