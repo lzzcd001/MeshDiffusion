@@ -143,6 +143,26 @@ python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
 
 where `$TRAIN_SPLIT_FILE` is a json list of indices to be included in the training set. Examples in `metadata/train_split/`. For the diffusion model config file, please refer to `configs/res64.py` or `configs/res128.py`.
 
+#### Training with our dataset
+
+The provided datasets are stored in `.npy` instead of `.pt`. Run the following instead
+
+```
+cd ../metadata/
+python save_meta.py --data_path $DMTET_NPY_FOLDER --json_path $META_FILE --extension npy
+```
+
+Train a diffusion model
+
+```
+cd ..
+
+python main_diffusion.py --mode=train --config=$DIFFUSION_CONFIG \
+--config.data.meta_path=$META_FILE \
+--config.data.filter_meta_path=$TRAIN_SPLIT_FILE \
+--config.data.extension=npy
+```
+
 ## Texture Generation
 
 Follow the instructions in https://github.com/TEXTurePaper/TEXTurePaper and create text-conditioned textures for the generated meshes.
