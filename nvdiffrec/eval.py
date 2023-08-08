@@ -432,7 +432,7 @@ if __name__ == "__main__":
         
         
         ### save image (before post-processing)
-        v_pose = rotate_scene(FLAGS, FLAGS.angle_index) ## pick a pose (pose # from 0 to 50)
+        v_pose = rotate_scene(FLAGS, FLAGS.angle_ind) ## pick a pose (pose # from 0 to 50)
         result_image, _ = validate_itr(glctx, prepare_batch(v_pose, FLAGS.background), geometry, opt_material, lgt, FLAGS)
         result_image = result_image.detach().cpu().numpy()
         util.save_image(os.path.join(viz_path, ('%s_%06d.png' % (FLAGS.viz_name, no_data))), result_image)
