@@ -25,6 +25,7 @@ MeshDiffusion is a diffusion model for generating 3D meshes with a direct parame
 - CUDA 11.6
 - Pytorch >= 1.6
 - Pytorch3D
+- ml_collections
 
 
 Follow the instructions to install requirements for [nvdiffrec](https://github.com/NVlabs/nvdiffrec)
